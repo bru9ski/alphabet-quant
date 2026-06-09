@@ -50,7 +50,7 @@
     }
     .input-field:focus { border-color: #10b981; }
     .btn-primary {
-      background: linear-gradient(135deg, #10b981, #059669);
+      background: #10b981;
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -60,7 +60,7 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary:hover { background: #059669; transform: translateY(-1px); }
     .btn-secondary {
       background: #1e293b;
       color: #94a3b8;
@@ -74,7 +74,7 @@
     }
     .btn-secondary:hover { border-color: #10b981; color: #10b981; }
     .btn-amber {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
+      background: #f59e0b;
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -84,7 +84,7 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-amber:hover { opacity: 0.9; }
+    .btn-amber:hover { background: #d97706; }
     .heat-cell {
       width: 52px; height: 52px;
       display: flex; align-items: center; justify-content: center;
@@ -103,14 +103,24 @@
     .bar-container { display: flex; flex-direction: column; gap: 8px; }
     .bar-row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
     .bar-track { flex: 1; background: #1e293b; border-radius: 4px; height: 8px; overflow: hidden; }
-    .bar-fill-green { background: linear-gradient(90deg, #10b981, #34d399); height: 100%; border-radius: 4px; transition: width 0.6s ease; }
-    .bar-fill-blue { background: linear-gradient(90deg, #3b82f6, #60a5fa); height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+    .bar-fill-green { background: #10b981; height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+    .bar-fill-blue { background: #3b82f6; height: 100%; border-radius: 4px; transition: width 0.6s ease; }
     .ticket-item { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; }
     .ticket-item.valid { border-color: rgba(16,185,129,0.3); }
     .ticket-item.warning { border-color: rgba(245,158,11,0.3); }
-    .stat-card { background: linear-gradient(135deg, #1e293b, #162032); border: 1px solid #1e3a5f44; border-radius: 12px; padding: 20px; }
+    .stat-card { background: #1e293b; border: 1px solid #1e3a5f44; border-radius: 12px; padding: 20px; }
     .glow-green { box-shadow: 0 0 20px rgba(16,185,129,0.1); }
     .section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #64748b; margin-bottom: 16px; }
+
+    /* Logo container */
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
     @media (max-width: 768px) {
       #sidebar { transform: translateX(-100%); position: fixed; z-index: 50; transition: transform 0.3s; }
       #sidebar.open { transform: translateX(0); }
@@ -124,11 +134,12 @@
   <!-- Logo -->
   <div class="p-5 border-b border-slate-800">
     <div class="flex items-center gap-3">
-      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QC8RXhpZgAASUkqAAgAAAAGABIBAwABAAAAAQAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAABMCAwABAAAAAQAAAGmHBAABAAAAZgAAAAAAAABgAAAAAQAAAGAAAAABAAAABgAAkAcABAAAADAyMTABkQcABAAAAAECAwAAoAcABAAAADAxMDABoAMAAQAAAP//AAACoAMAAQAAANAHAAADoAMAAQAAANAHAAAAAAAA" 
-           alt="AlphaBet Quant Logo" 
-           class="w-10 h-10 rounded-lg object-cover"
-           onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'" />
-      <div id="logo-fallback" style="display:none" class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-content-center items-center justify-center">
+      <img
+        src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QC8RXhpZgAASUkqAAgAAAAGABIBAwABAAAAAQAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAABMCAwABAAAAAQAAAGmHBAABAAAAZgAAAAAAAABgAAAAAQAAAGAAAAABAAAABgAAkAcABAAAADAyMTABkQcABAAAAAECAwAAoAcABAAAADAxMDABoAMAAQAAAP//AAACoAMAAQAAANAHAAADoAMAAQAAANAHAAAAAAAA"
+        alt="AlphaBet Quant Logo"
+        class="logo-img"
+        onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'" />
+      <div id="logo-fallback" style="display:none" class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center flex-shrink-0">
         <span class="text-white font-black text-lg">A</span>
       </div>
       <div>
@@ -181,7 +192,12 @@
   <button onclick="document.getElementById('sidebar').classList.toggle('open')" class="text-slate-400">
     <i data-lucide="menu" class="w-5 h-5"></i>
   </button>
-  <span class="text-white font-bold text-sm">AlphaBet <span class="text-emerald-400">QUANT</span></span>
+  <div class="flex items-center gap-2">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QC8RXhpZgAASUkqAAgAAAAGABIBAwABAAAAAQAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAABMCAwABAAAAAQAAAGmHBAABAAAAZgAAAAAAAABgAAAAAQAAAGAAAAABAAAABgAAkAcABAAAADAyMTABkQcABAAAAAECAwAAoAcABAAAADAxMDABoAMAAQAAAP//AAACoAMAAQAAANAHAAADoAMAAQAAANAHAAAAAAAA"
+         alt="Logo" class="w-7 h-7 rounded-md object-cover"
+         onerror="this.style.display='none'" />
+    <span class="text-white font-bold text-sm">AlphaBet <span class="text-emerald-400">QUANT</span></span>
+  </div>
   <div class="w-5"></div>
 </div>
 
@@ -528,8 +544,8 @@
 const state = {
   bankroll: 1000,
   poissonDone: false,
-  markets: [],    // { label, pReal, odd, ev, kelly, stakeVal }
-  ticket: [],     // max 2 items { label, odd, pReal, ev, stakeVal }
+  markets: [],
+  ticket: [],
 };
 
 // ============================================================
@@ -540,7 +556,6 @@ function switchTab(tab) {
   document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
   document.getElementById('nav-' + tab).classList.add('active');
-  // Fechar sidebar mobile
   document.getElementById('sidebar').classList.remove('open');
 }
 
@@ -574,7 +589,7 @@ function calcMarkets(matrix, maxGoals = 5) {
   let pHome = 0, pDraw = 0, pAway = 0;
   let pBTTS = 0, pNBTTS = 0;
   let pOver15 = 0, pUnder15 = 0, pOver25 = 0, pUnder25 = 0;
-  let pWinBy2Plus = 0, pWinBy1 = 0, pWinForDNB = 0;
+  let pWinBy2Plus = 0, pWinBy1 = 0;
 
   for (let h = 0; h <= maxGoals; h++) {
     for (let a = 0; a <= maxGoals; a++) {
@@ -582,7 +597,7 @@ function calcMarkets(matrix, maxGoals = 5) {
       if (h > a)  pHome += p;
       if (h === a) pDraw += p;
       if (h < a)  pAway += p;
-      if (h > 0 && a > 0) pBTTS += p;  else pNBTTS += p;
+      if (h > 0 && a > 0) pBTTS += p; else pNBTTS += p;
       const totalGoals = h + a;
       if (totalGoals > 1.5) pOver15 += p; else pUnder15 += p;
       if (totalGoals > 2.5) pOver25 += p; else pUnder25 += p;
@@ -591,20 +606,10 @@ function calcMarkets(matrix, maxGoals = 5) {
     }
   }
 
-  pWinForDNB = pHome;
-
-  // Handicap Asiático 0.0 (DNB): P_home / (1 - P_draw)
   const pAH00 = (1 - pDraw) > 0 ? pHome / (1 - pDraw) : 0;
-  // Handicap Asiático -1.0: P_win_by2plus / (1 - P_win_by1)
   const pAHm10 = (1 - pWinBy1) > 0 ? pWinBy2Plus / (1 - pWinBy1) : 0;
 
-  return {
-    pHome, pDraw, pAway,
-    pBTTS, pNBTTS,
-    pOver15, pUnder15,
-    pOver25, pUnder25,
-    pAH00, pAHm10
-  };
+  return { pHome, pDraw, pAway, pBTTS, pNBTTS, pOver15, pUnder15, pOver25, pUnder25, pAH00, pAHm10 };
 }
 
 // ============================================================
@@ -620,8 +625,7 @@ function updateBankroll() {
   state.bankroll = val;
   const formatted = val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   document.getElementById('dash-bankroll').textContent = formatted;
-  const maxPct = (2.5).toFixed(1) + '%';
-  document.getElementById('max-stake-pct').textContent = maxPct;
+  document.getElementById('max-stake-pct').textContent = (2.5).toFixed(1) + '%';
   document.getElementById('max-stake-val').textContent = 'R$ ' + (val * 0.025).toFixed(2);
   if (state.poissonDone) rebuildValueBetTable();
   updateTicketSummary();
@@ -649,7 +653,6 @@ function runPoisson() {
   renderHandicap(m);
   document.getElementById('poisson-results').style.display = 'block';
 
-  // Atualiza Value Bet tab
   document.getElementById('vb-no-calc').style.display = 'none';
   document.getElementById('vb-content').style.display = 'block';
   rebuildValueBetTable();
@@ -662,14 +665,14 @@ function buildMarketList(m) {
     { id: 'home',    label: 'Vitória ' + homeName + ' (1)', pReal: m.pHome },
     { id: 'draw',    label: 'Empate (X)',                    pReal: m.pDraw },
     { id: 'away',    label: 'Vitória ' + awayName + ' (2)',  pReal: m.pAway },
-    { id: 'btts',    label: 'Ambas Marcam — Sim',           pReal: m.pBTTS },
-    { id: 'nbtts',   label: 'Ambas Marcam — Não',           pReal: m.pNBTTS },
-    { id: 'over15',  label: 'Over 1.5 Gols',                pReal: m.pOver15 },
-    { id: 'under15', label: 'Under 1.5 Gols',               pReal: m.pUnder15 },
-    { id: 'over25',  label: 'Over 2.5 Gols',                pReal: m.pOver25 },
-    { id: 'under25', label: 'Under 2.5 Gols',               pReal: m.pUnder25 },
-    { id: 'ah00',    label: 'H. Asiático 0.0 (DNB) — Casa', pReal: m.pAH00 },
-    { id: 'ahm10',   label: 'H. Asiático -1.0 — Casa',      pReal: m.pAHm10 },
+    { id: 'btts',    label: 'Ambas Marcam — Sim',            pReal: m.pBTTS },
+    { id: 'nbtts',   label: 'Ambas Marcam — Não',            pReal: m.pNBTTS },
+    { id: 'over15',  label: 'Over 1.5 Gols',                 pReal: m.pOver15 },
+    { id: 'under15', label: 'Under 1.5 Gols',                pReal: m.pUnder15 },
+    { id: 'over25',  label: 'Over 2.5 Gols',                 pReal: m.pOver25 },
+    { id: 'under25', label: 'Under 2.5 Gols',                pReal: m.pUnder25 },
+    { id: 'ah00',    label: 'H. Asiático 0.0 (DNB) — Casa',  pReal: m.pAH00 },
+    { id: 'ahm10',   label: 'H. Asiático -1.0 — Casa',       pReal: m.pAHm10 },
   ];
 }
 
@@ -683,7 +686,6 @@ function renderHeatmap(matrix) {
   const awayName = document.getElementById('away-name').value || 'V';
 
   let html = '<table style="border-collapse:separate; border-spacing:4px">';
-  // Header row — visitante gols
   html += '<tr><td class="heat-cell" style="background:transparent; color:#64748b; font-size:10px">' + homeName.slice(0,3) + '\\' + awayName.slice(0,3) + '</td>';
   for (let a = 0; a <= maxGoals; a++) {
     html += '<td class="heat-cell" style="background:transparent; color:#64748b; font-size:11px">' + a + '</td>';
@@ -706,7 +708,6 @@ function renderHeatmap(matrix) {
 }
 
 function heatColor(t) {
-  // 0 → #1e293b (slate-800), 1 → #10b981 (emerald)
   const r = Math.round(30 + (16 - 30) * t);
   const g = Math.round(41 + (185 - 41) * t);
   const b = Math.round(59 + (129 - 59) * t);
@@ -761,18 +762,8 @@ function renderProbBars(m) {
 
 function renderHandicap(m) {
   const items = [
-    {
-      title: 'Handicap Asiático 0.0 (DNB)',
-      formula: 'P_home / (1 − P_draw)',
-      val: m.pAH00,
-      fairOdd: m.pAH00 > 0 ? 1/m.pAH00 : 0,
-    },
-    {
-      title: 'Handicap Asiático −1.0',
-      formula: 'P(margem≥2) / (1 − P(margem=1))',
-      val: m.pAHm10,
-      fairOdd: m.pAHm10 > 0 ? 1/m.pAHm10 : 0,
-    },
+    { title: 'Handicap Asiático 0.0 (DNB)', formula: 'P_home / (1 − P_draw)', val: m.pAH00, fairOdd: m.pAH00 > 0 ? 1/m.pAH00 : 0 },
+    { title: 'Handicap Asiático −1.0', formula: 'P(margem≥2) / (1 − P(margem=1))', val: m.pAHm10, fairOdd: m.pAHm10 > 0 ? 1/m.pAHm10 : 0 },
   ];
   let html = '';
   items.forEach(item => {
@@ -889,17 +880,8 @@ function updateVBSummary() {
 function addToTicket(idx) {
   const mkt = state.markets[idx];
   if (!mkt || mkt.ev === null || mkt.ev <= 0.05) return;
-
-  if (state.ticket.length >= 2) {
-    alert('⚠️ Bilhete cheio! Máximo 2 seleções permitidas.');
-    return;
-  }
-  // Evitar duplicata
-  if (state.ticket.find(t => t.id === mkt.id)) {
-    alert('Esta seleção já está no bilhete.');
-    return;
-  }
-
+  if (state.ticket.length >= 2) { alert('⚠️ Bilhete cheio! Máximo 2 seleções permitidas.'); return; }
+  if (state.ticket.find(t => t.id === mkt.id)) { alert('Esta seleção já está no bilhete.'); return; }
   state.ticket.push({ ...mkt });
   renderTicket();
   updateTicketSummary();
@@ -951,10 +933,7 @@ function renderTicket() {
 
 function updateTicketSummary() {
   const summaryEl = document.getElementById('ticket-summary');
-  if (state.ticket.length === 0) {
-    summaryEl.style.display = 'none';
-    return;
-  }
+  if (state.ticket.length === 0) { summaryEl.style.display = 'none'; return; }
   summaryEl.style.display = 'block';
 
   const combinedOdd = state.ticket.reduce((acc, t) => acc * t.odd, 1);
@@ -982,10 +961,7 @@ function updateTicketSummary() {
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   updateBankroll();
-  // Auto-run demo
-  setTimeout(() => {
-    runPoisson();
-  }, 400);
+  setTimeout(() => { runPoisson(); }, 400);
 });
 </script>
 </body>
